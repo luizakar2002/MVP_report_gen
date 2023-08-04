@@ -19,6 +19,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+let storedText = ""; // Variable to store the received text
+
 app.post("/chat", async (req, res) => {
   const { prompt } = req.body;
 
@@ -30,6 +32,18 @@ app.post("/chat", async (req, res) => {
   });
 
   res.send(completion.data.choices[0].text);
+});
+
+// Endpoint to store the generated text
+app.post("/store_text", (req, res) => {
+  const { text } = req.body;
+  storedText = text; // Store the received text in the variable
+  res.json({ status: "success" });
+});
+
+// Endpoint to serve the stored text to Web App B
+app.get("/get_text", (req, res) => {
+  res.json({ text: storedText });
 });
 
 const PORT = 8000;

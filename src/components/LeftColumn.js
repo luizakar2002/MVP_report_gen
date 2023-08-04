@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Paper, TextField, IconButton, Button } from '@mui/material';
 import searchicon from '../imgsforfront/search.png';
 
+const HTTP = "http://localhost:8000";
+const GET_TEXT_ENDPOINT = `${HTTP}/get_text`;
+
 function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
+  const [fetchedText, setFetchedText] = useState('');
+
+  const fetchTextFromEndpoint = async () => {
+    try {
+      const response = await fetch(GET_TEXT_ENDPOINT);
+      if (response.ok) {
+        const data = await response.json();
+        setFetchedText(data.text);
+      } else {
+        console.error('Error fetching text:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('Error fetching text:', error);
+    }
+  };
+
+  const handleSetUserInput = () => {
+    handleUserInputChange({ target: { value: fetchedText } });
+  };
+
   return (
     <div
       style={{
@@ -46,12 +69,21 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
           multiline
           rows={15.3}
           fullWidth
-          value={userInput}
+          value={fetchedText || userInput} // Display fetchedText if available, otherwise display userInput
           onChange={handleUserInputChange}
         />
         <Button variant="contained" type="submit" color="primary" style={{ backgroundColor: '#4357a3', marginTop: "45px", border: '2px solid #4357a3' }} onClick={handleGenerateClick}>
           Generate
         </Button>
+        <Button variant="contained" type="button" color="primary" style={{ backgroundColor: '#4357a3', marginTop: "10px", border: '2px solid #4357a3' }} onClick={fetchTextFromEndpoint}>
+          Fetch Text from /get_text
+        </Button>
+        <Button variant="contained" type="button" color="primary" style={{ backgroundColor: '#4357a3', marginTop: "10px", border: '2px solid #4357a3' }} onClick={handleSetUserInput}>
+          Set Text from userInput
+        </Button>
+        <div>
+          <p>Fetched Text: {fetchedText}</p>
+        </div>
       </Paper>
     </div>
   );

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeaderBox from './HeaderBox';
 import LeftColumn from './LeftColumn';
 import RightColumn from './RightColumn';
 
 const HTTP = "http://localhost:8000/chat";
+const GET_TEXT_ENDPOINT = "http://localhost:8000/get_text";
 
 function TwoColumnPage() {
   const [userInput, setUserInput] = useState('');
@@ -29,6 +30,21 @@ function TwoColumnPage() {
       console.error('Error fetching generated text:', error);
     }
   };
+
+  // Fetch text from /get_text endpoint and set it as user input on component mount
+  useEffect(() => {
+    const fetchTextFromEndpoint = async () => {
+      try {
+        const response = await fetch(GET_TEXT_ENDPOINT);
+        const data = await response.json();
+        setUserInput(data.text);
+      } catch (error) {
+        console.error('Error fetching text:', error);
+      }
+    };
+
+    fetchTextFromEndpoint();
+  }, []);
 
   return (
     <div>
