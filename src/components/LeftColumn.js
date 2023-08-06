@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Paper, TextField, IconButton, Button } from '@mui/material';
 import searchicon from '../imgsforfront/search.png';
 
-const HTTP = "http://localhost:8000";
+const HTTP = "https://lukarape.pythonanywhere.com/";
 const GET_TEXT_ENDPOINT = `${HTTP}/get_text`;
 
 function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
