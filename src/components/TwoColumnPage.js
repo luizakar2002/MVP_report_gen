@@ -3,8 +3,8 @@ import HeaderBox from './HeaderBox';
 import LeftColumn from './LeftColumn';
 import RightColumn from './RightColumn';
 
-const HTTP = "http://localhost:8000/chat";
-const GET_TEXT_ENDPOINT = "http://localhost:8000/get_text";
+const HTTP = "https://lukarape.pythonanywhere.com/chat";
+const GET_TEXT_ENDPOINT = "https://lukarape.pythonanywhere.com/get_text";
 
 function TwoColumnPage() {
   const [userInput, setUserInput] = useState('');
