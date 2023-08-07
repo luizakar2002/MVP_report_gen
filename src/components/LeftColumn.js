@@ -29,9 +29,7 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        justifyContent: 'row',
         width: '500px',
         marginTop: '70px',
       }}
@@ -45,7 +43,8 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
           borderRadius: '5',
           boxShadow: 'none',
           marginBottom: '10px',
-          width: '49%',
+          marginLeft: '40px',
+          width: '400px',
         }}
       >
         <TextField
@@ -55,7 +54,7 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
         />
         <IconButton
           color="primary"
-          style={{ backgroundColor: '#e4e4ee', marginTop: "-43px", width: '30px', height: '30px', marginLeft: 'auto'}}
+          style={{ backgroundColor: '#e4e4ee', marginTop: "-43px", width: '30px', height: '30px', marginLeft: '350px'}}
         >
           <img
             src={searchicon}
@@ -64,7 +63,7 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
           />
         </IconButton>
       </Paper>
-      <Paper sx={{ display: 'flex', flexDirection: 'column', flex: 2, padding: '20px', width: '49%', borderRadius: 5 }}>
+      <Paper sx={{ display: 'flex', flexDirection: 'column', flex: 2, padding: '20px', marginRight: '40px', marginLeft: '40px', marginTop: '365px', height: '485px', borderRadius: 5 }}>
         <TextField
           label="Enter your text here"
           multiline
@@ -76,13 +75,14 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
         <Button variant="contained" type="submit" color="primary" style={{ backgroundColor: '#4357a3', marginTop: "45px", border: '2px solid #4357a3' }} onClick={handleGenerateClick}>
           Generate
         </Button>
-        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-          <Button variant="contained" type="button" color="primary" style={{ backgroundColor: '#4357a3', marginTop: "10px", border: '2px solid #4357a3', flex: 1, marginRight: '5px' }} onClick={fetchTextFromEndpoint}>
-            Set Audio Text
-          </Button>
-          <Button variant="contained" type="button" color="primary" style={{ backgroundColor: '#4357a3', marginTop: "10px", border: '2px solid #4357a3', flex: 1, marginLeft: '5px' }} onClick={handleSetUserInput}>
-            Submit Audio
-          </Button>
+        <Button variant="contained" type="button" color="primary" style={{ backgroundColor: '#4357a3', marginTop: "10px", border: '2px solid #4357a3' }} onClick={fetchTextFromEndpoint}>
+          Get audio text
+        </Button>
+        <Button variant="contained" type="button" color="primary" style={{ backgroundColor: '#4357a3', marginTop: "10px", border: '2px solid #4357a3' }} onClick={handleSetUserInput}>
+          Set audio text
+        </Button>
+        <div>
+          <p>Fetched Text: {fetchedText}</p>
         </div>
       </Paper>
     </div>
@@ -90,3 +90,4 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
 }
 
 export default LeftColumn;
+ChatGPT
