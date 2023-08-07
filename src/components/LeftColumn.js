@@ -30,8 +30,8 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
     <div
       style={{
         display: 'flex',
-        justifyContent: 'space-between', // Arrange buttons side by side
-        alignItems: 'center', // Align items vertically
+        justifyContent: 'space-between',
+        alignItems: 'center',
         width: '500px',
         marginTop: '70px',
       }}
@@ -45,7 +45,7 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
           borderRadius: '5',
           boxShadow: 'none',
           marginBottom: '10px',
-          width: '49%', // Adjust width to fit both buttons side by side
+          width: '49%',
         }}
       >
         <TextField
@@ -55,7 +55,7 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
         />
         <IconButton
           color="primary"
-          style={{ backgroundColor: '#e4e4ee', marginTop: "-43px", width: '30px', height: '30px', marginLeft: 'auto'}} // Adjust margin to right-align the search icon
+          style={{ backgroundColor: '#e4e4ee', marginTop: "-43px", width: '30px', height: '30px', marginLeft: 'auto'}}
         >
           <img
             src={searchicon}
@@ -78,10 +78,10 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
         </Button>
         <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
           <Button variant="contained" type="button" color="primary" style={{ backgroundColor: '#4357a3', marginTop: "10px", border: '2px solid #4357a3', flex: 1, marginRight: '5px' }} onClick={fetchTextFromEndpoint}>
-            Fetch Text from /get_text
+            Set Audio Text
           </Button>
           <Button variant="contained" type="button" color="primary" style={{ backgroundColor: '#4357a3', marginTop: "10px", border: '2px solid #4357a3', flex: 1, marginLeft: '5px' }} onClick={handleSetUserInput}>
-            Set Text from userInput
+            Submit Audio
           </Button>
         </div>
       </Paper>
