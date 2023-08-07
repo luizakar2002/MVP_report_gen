@@ -90,4 +90,3 @@ function LeftColumn({ userInput, handleUserInputChange, handleGenerateClick }) {
 }
 
 export default LeftColumn;
-ChatGPT
